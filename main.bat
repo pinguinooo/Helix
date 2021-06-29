@@ -4,10 +4,12 @@ echo                                            Welcome to installer 1.0.0
 echo                                            This Program Auto Updates!
 pause
 
-color 3
+
 cls
 echo Welcome to Installer
 :start
+cls
+color 3
 ECHO Pick a category
 ECHO 1.Presets
 ECHO 2.App Store
@@ -26,30 +28,44 @@ if '%choice%'=='3' goto update
 if '%choice%'=='4' goto logs
 if '%choice%'=='5' goto oldlogs
 if '%choice%'=='6' goto discord
+if '%choice%'=='7' goto n
+if '%choice%'=='8' goto n
 if '%choice%'=='9' goto delend
 if '%choice%'=='0' goto end
 cls
 ECHO "%choice%" is not valid, try again
 ECHO.
 goto start
+
 :presets
 cls
+goto start
 
 :appstore
 cls
+goto start
 
 :update
 cls
+color 7
+winget upgrade --all
+pause
+goto start
 
 :logs
 cls
 echo Change logs
 echo Version 1.0.0
 echo Added the Basics to the program like a appstore,presets and update
+pause
+goto start
 
 :oldlogs
 echo Old changelogs
 echo Were still on 1.0.0 no need for older change logs
+pause
+goto start
+
 
 :discord
 cls
