@@ -1,1 +1,0 @@
-winget uninstall dropbox
