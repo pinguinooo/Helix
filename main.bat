@@ -75,7 +75,6 @@ set choice=
 set /p choice=Type the number to pick a preset : 
 if not '%choice%'=='' set choice=%choice:~0,1%
 if '%choice%'=='0' goto start
-cls
 
 
 
