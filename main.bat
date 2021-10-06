@@ -67,6 +67,18 @@ ECHO "%choice%" is not valid, try again
 ECHO.
 goto start
 
+:presets
+cls
+echo presets coming soon!
+ECHO 0.back
+set choice=
+set /p choice=Type the number to pick a preset : 
+if not '%choice%'=='' set choice=%choice:~0,1%
+if '%choice%'=='0' goto start
+cls
+
+
+
 :appstore
 cls
 goto start
@@ -100,6 +112,7 @@ goto start
 
 :delend
 del main.bat
+del install.bat
 exit
 
 :end
