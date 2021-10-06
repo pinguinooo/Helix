@@ -61,7 +61,7 @@ if '%choice%'=='6' goto discord
 if '%choice%'=='7' goto n
 if '%choice%'=='8' goto n
 if '%choice%'=='9' goto delend
-if '%choice%'=='0' goto end
+if '%choice%'=='0' goto start
 cls
 ECHO "%choice%" is not valid, try again
 ECHO.
