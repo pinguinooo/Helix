@@ -37,35 +37,6 @@ ECHO "%choice%" is not valid, try again
 ECHO.
 goto start
 
-:presets
-cls
-color 3
-ECHO Pick a Preset
-ECHO 1.
-ECHO 2.
-ECHO 3.
-ECHO 4.
-ECHO 5.
-ECHO 6.
-ECHO 9.
-ECHO 0.back
-set choice=
-set /p choice=Type the number to pick a preset : 
-if not '%choice%'=='' set choice=%choice:~0,1%
-if '%choice%'=='1' goto presets
-if '%choice%'=='2' goto appstore
-if '%choice%'=='3' goto update
-if '%choice%'=='4' goto logs
-if '%choice%'=='5' goto oldlogs
-if '%choice%'=='6' goto discord
-if '%choice%'=='7' goto n
-if '%choice%'=='8' goto n
-if '%choice%'=='9' goto delend
-if '%choice%'=='0' goto start
-cls
-ECHO "%choice%" is not valid, try again
-ECHO.
-goto start
 
 :presets
 cls
@@ -82,6 +53,38 @@ if '%choice%'=='0' goto start
 cls
 color 3
 ECHO Pick a Preset
+ECHO 1.Web Browsers
+ECHO 2.Messaging
+ECHO 3.Media
+ECHO 4.Developer Tools
+ECHO 5.Photo
+ECHO 6.Documents
+ECHO 7.Secerity
+ECHO 8.Utilities
+ECHO 9.Other
+ECHO 0.back
+set choice=
+set /p choice=Type the number to pick a preset : 
+if not '%choice%'=='' set choice=%choice:~0,1%
+if '%choice%'=='1' goto browsers
+if '%choice%'=='2' goto message
+if '%choice%'=='3' goto media
+if '%choice%'=='4' goto dev
+if '%choice%'=='5' goto photo
+if '%choice%'=='6' goto doc
+if '%choice%'=='7' goto secerity
+if '%choice%'=='8' goto utilities
+if '%choice%'=='9' goto other
+if '%choice%'=='0' goto start
+cls
+ECHO "%choice%" is not valid, try again
+ECHO.
+goto start
+
+:browsers
+cls
+color 3
+ECHO Pick a Preset
 ECHO 1.
 ECHO 2.
 ECHO 3.
@@ -95,20 +98,19 @@ ECHO 0.back
 set choice=
 set /p choice=Type the number to pick a preset : 
 if not '%choice%'=='' set choice=%choice:~0,1%
-if '%choice%'=='1' goto 
-if '%choice%'=='2' goto 
-if '%choice%'=='3' goto 
-if '%choice%'=='4' goto 
-if '%choice%'=='5' goto 
-if '%choice%'=='6' goto 
-if '%choice%'=='7' goto 
-if '%choice%'=='8' goto 
-if '%choice%'=='9' goto 
+if '%choice%'=='1' goto browsers
+if '%choice%'=='2' goto message
+if '%choice%'=='3' goto media
+if '%choice%'=='4' goto dev
+if '%choice%'=='5' goto photo
+if '%choice%'=='6' goto doc
+if '%choice%'=='7' goto secerity
+if '%choice%'=='8' goto utilities
+if '%choice%'=='9' goto other
 if '%choice%'=='0' goto start
 cls
 ECHO "%choice%" is not valid, try again
 ECHO.
-goto start
 goto start
 
 :update
