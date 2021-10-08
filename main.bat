@@ -85,33 +85,59 @@ goto start
 cls
 color 3
 ECHO Pick a Preset
-ECHO 1.
-ECHO 2.
-ECHO 3.
-ECHO 4.
-ECHO 5.
-ECHO 6.
-ECHO 7.
-ECHO 8.
-ECHO 9.
+ECHO 1.Chrome
+ECHO 2.Firefox
+ECHO 3.Brave
+ECHO 4.Opera
+ECHO 5.Opera GX
 ECHO 0.back
 set choice=
 set /p choice=Type the number to pick a preset : 
 if not '%choice%'=='' set choice=%choice:~0,1%
-if '%choice%'=='1' goto browsers
-if '%choice%'=='2' goto message
-if '%choice%'=='3' goto media
-if '%choice%'=='4' goto dev
-if '%choice%'=='5' goto photo
-if '%choice%'=='6' goto doc
-if '%choice%'=='7' goto secerity
-if '%choice%'=='8' goto utilities
-if '%choice%'=='9' goto other
+if '%choice%'=='1' goto chrome
+if '%choice%'=='2' goto firefox
+if '%choice%'=='3' goto brave
+if '%choice%'=='4' goto opera
+if '%choice%'=='5' goto operagx
 if '%choice%'=='0' goto start
 cls
 ECHO "%choice%" is not valid, try again
 ECHO.
 goto start
+
+:chrome
+cls
+color 7
+winget install --id Google.Chrome
+pause
+goto start
+
+:firefox
+cls
+color 7
+winget install --id Mozilla.Firefox
+pause
+goto start
+
+:brave
+cls
+color 7
+winget install --id BraveSoftware.BraveBrowser
+pause
+goto start
+
+:opera
+cls
+color 7
+winget install --id Opera.Opera
+pause goto start
+
+:operagx
+cls
+color 7
+winget install --id Opera.OperaGX
+
+
 
 :update
 cls
