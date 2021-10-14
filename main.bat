@@ -37,17 +37,71 @@ ECHO "%choice%" is not valid, try again
 ECHO.
 goto start
 
-
 :presets
 cls
-echo presets coming soon!
+echo 1.Basic Install (mini)
+echo 2.Basic Install
+echo 3.Work From Home
+echo 4.Essential Tools
+echo 5.Entertainment
+echo 6.Gaming
+echo 7.Developer
+echo 8.Communication
+echo 9.School
 ECHO 0.back
 set choice=
 set /p choice=Type the number to pick a preset : 
 if not '%choice%'=='' set choice=%choice:~0,1%
+if '%choice%'=='1' goto basicinstallm
+if '%choice%'=='2' goto basicinstall
+if '%choice%'=='3' goto workfromhome
+if '%choice%'=='4' goto essentialtools
+if '%choice%'=='5' goto entertainment
+if '%choice%'=='6' goto gaming
+if '%choice%'=='7' goto developerapps
+if '%choice%'=='8' goto communication
+if '%choice%'=='9' goto school
 if '%choice%'=='0' goto start
+cls
+ECHO "%choice%" is not valid, try again
+ECHO.
+goto start
 
+:basicinstallm
+color 3
+cls
 
+:basicinstall
+color 3
+cls
+
+:workfromhome
+color 3
+cls
+
+:essentialtools
+color 3
+cls
+
+:entertainment
+color 3
+cls
+
+:gaming
+color 3
+cls
+
+:developerapps
+color 3
+cls
+
+:communication
+color 3
+cls
+
+:school
+color 3
+cls
 
 :appstore
 cls
@@ -137,6 +191,7 @@ cls
 color 7
 winget install --id Opera.OperaGX
 
+:message
 
 
 :update
