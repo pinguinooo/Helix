@@ -1,17 +1,17 @@
 @echo off
-@title Installer
-echo                                            Welcome to installer 1.0.0
+@title Helix
+echo                                              Welcome to Helix 1.0.0
 echo                                            This Program Auto Updates!
 pause
 
 
 cls
-echo Welcome to Installer
+echo Welcome to Helix!
 :start
 cls
 color 3
 ECHO Pick a category
-ECHO 1.Presets
+ECHO 1.Packs
 ECHO 2.App Store
 ECHO 3.Update All Apps
 ECHO 4.Change Logs
@@ -22,7 +22,7 @@ ECHO 0.Exit
 set choice=
 set /p choice=Type the number to pick a category : 
 if not '%choice%'=='' set choice=%choice:~0,1%
-if '%choice%'=='1' goto presets
+if '%choice%'=='1' goto packs
 if '%choice%'=='2' goto appstore
 if '%choice%'=='3' goto update
 if '%choice%'=='4' goto logs
@@ -37,7 +37,7 @@ ECHO "%choice%" is not valid, try again
 ECHO.
 goto start
 
-:presets
+:packs
 cls
 echo 1.Basic Install (mini)
 echo 2.Basic Install
@@ -85,26 +85,44 @@ goto start
 :essentialtools
 color 3
 cls
+winget install --id=ShareX.ShareX -e  && winget install --id=QL-Win.QuickLook -e  && winget install --id=Notepad++.Notepad++ -e  && winget install --id=GIMP.GIMP -e  && winget install --id=OBSProject.OBSStudio -e  && winget install --id=File-New-Project.EarTrumpet -e  && winget install --id=Wox.Wox -e  && winget install --id=VideoLAN.VLC -e  && winget install --id=DelugeTeam.Deluge -e  && winget install --id=RARLab.WinRAR -e  && winget install --id=Audacity.Audacity -e  && winget install --id=AgileBits.1Password -e  && winget install --id=ExpressVPN.ExpressVPN -e 
+pause
+goto start
 
 :entertainment
 color 3
 cls
+winget install --id=Apple.iTunes -e  && winget install --id=Deezer.Deezer -e  && winget install --id=VideoLAN.VLC -e  && winget install --id=Amazon.Music -e  && winget install --id=Ytmdesktop.Ytmdesktop -e  && winget install --id=SamuelAttard.GooglePlayMusicDesktopPlayer -e  && winget install --id=Sonos.Controller -e 
+pause
+goto start
 
 :gaming
 color 3
 cls
+winget install --id=Valve.Steam -e  && winget install --id=Discord.Discord -e  && winget install --id=EpicGames.EpicGamesLauncher -e  && winget install --id=Nvidia.GeForceExperience -e  && winget install --id=Playnite.Playnite -e  && winget install --id=MoonlightGameStreamingProject.Moonlight -e  && winget install --id=Logitech.LGS -e  && winget install --id=OBSProject.OBSStudio -e 
+pause
+goto start
 
 :developerapps
 color 3
 cls
+winget install --id=Notepad++.Notepad++ -e  && winget install --id=PenguinLabs.Cacher -e  && winget install --id=Microsoft.WindowsTerminal -e  && winget install --id=GitHub.GitHubDesktop -e  && winget install --id=GitHub.cli -e  && winget install --id=PuTTY.PuTTY -e  && winget install --id=GitHub.Atom -e  && winget install --id=lukehaas.RunJS -e  && winget install --id=Toinane.Colorpicker -e 
+pause
+goto start
 
 :communication
 color 3
 cls
+winget install --id=MehediHassan.Tweeten -e  && winget install --id=Caprine.Caprine -e  && winget install --id=Microsoft.Skype -e  && winget install --id=AmineMouafik.Ferdi -e  && winget install --id=Discord.Discord -e  && winget install --id=SlackTechnologies.Slack -e 
+pause
+goto start
 
 :school
 color 3
 cls
+winget install --id=evernote.evernote -e  && winget install --id=LibreOffice.LibreOffice -e  && winget install --id=Qalculate.Qalculate -e  && winget install --id=Zoom.Zoom -e  && winget install --id=Microsoft.Teams -e  && winget install --id=Automattic.Simplenote -e  && winget install --id=AcroSoftware.CutePDFWriter -e  && winget install --id=Apache.OpenOffice -e  && winget install --id=Notion.Notion -e  && winget install --id=StandardNotes.StandardNotes -e  && winget install --id=voidtools.Everything -e  && winget install --id=Wox.Wox -e  && winget install --id=QL-Win.QuickLook -e 
+pause
+goto start
 
 :appstore
 cls
