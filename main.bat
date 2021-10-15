@@ -78,6 +78,9 @@ cls
 :workfromhome
 color 3
 cls
+winget install --id=Microsoft.Teams -e  && winget install --id=Zoom.Zoom -e  && winget install --id=Notion.Notion -e  && winget install --id=SlackTechnologies.Slack -e  && winget install --id=Toggl.TogglDesktop -e  && winget install --id=ShareX.ShareX -e  && winget install --id=Loom.Loom -e  && winget install --id=Discord.Discord -e  && winget install --id=Microsoft.Skype -e  && winget install --id=Google.Chrome -e  && winget install --id=Microsoft.OneDrive -e 
+pause
+goto start
 
 :essentialtools
 color 3
