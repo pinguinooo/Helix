@@ -213,7 +213,43 @@ color 7
 winget install --id Opera.OperaGX
 
 :message
+cls
+color 3
+ECHO Pick a Preset
+ECHO 1.Discord
+ECHO 2.
+ECHO 3.
+ECHO 4.
+ECHO 5.
+ECHO 6.
+ECHO 7.
+ECHO 8.
+ECHO 9.
+ECHO 0.back
+set choice=
+set /p choice=Type the number to pick a preset : 
+if not '%choice%'=='' set choice=%choice:~0,1%
+if '%choice%'=='1' goto discorddl
+if '%choice%'=='2' goto 
+if '%choice%'=='3' goto 
+if '%choice%'=='4' goto 
+if '%choice%'=='5' goto 
+if '%choice%'=='6' goto
+if '%choice%'=='7' goto
+if '%choice%'=='8' goto
+if '%choice%'=='9' goto
+if '%choice%'=='0' goto start
+cls
+ECHO "%choice%" is not valid, try again
+ECHO.
+goto start
 
+:discorddl
+cls
+color 7
+winget install discord
+pause
+goto start
 
 :update
 cls
