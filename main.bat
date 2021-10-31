@@ -5,9 +5,14 @@ echo                                            This Program Auto Updates!
 pause
 
 
-for /f "tokens=4-5 delims=. " %%i in ('ver') do set VERSION=%%i.%%j
-if "%version%" == "10.0" goto win10
-if "%version%" == "11.0" goto win11
+ver | find "10.0.22000" > nul
+if errorlevel = 1 goto next1
+if errorlevel = 0 goto win11
+
+:next1
+ver | find "10.0" > nul
+if errorlevel = 1 goto error
+if errorlevel = 0 goto win10
 
 :win10
 goto start10
