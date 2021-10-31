@@ -5,8 +5,172 @@ echo                                            This Program Auto Updates!
 pause
 
 
+for /f "tokens=4-5 delims=. " %%i in ('ver') do set VERSION=%%i.%%j
+if "%version%" == "10.0" goto win10
+if "%version%" == "11.0" goto win11
+
+:win10
+goto start10
+:start10
 cls
-echo Welcome to Helix!
+color 3
+ECHO Pick a category
+ECHO 1.App Store
+ECHO 2.Change Logs
+ECHO 3.Old Change Logs
+ECHO 4.Join Discord
+ECHO 8.Why am i not seeing all the options?
+ECHO 9.Delete this script and exit
+ECHO 0.Exit
+set choice=
+set /p choice=Type the number to pick a category : 
+if not '%choice%'=='' set choice=%choice:~0,1%
+if '%choice%'=='1' goto appstore10
+if '%choice%'=='2' goto logs
+if '%choice%'=='3' goto oldlogs
+if '%choice%'=='4' goto discord
+if '%choice%'=='8' goto wainsato
+if '%choice%'=='9' goto delend
+if '%choice%'=='0' goto end
+cls
+ECHO "%choice%" is not valid, try again
+ECHO.
+goto start10
+
+:appstore10
+cls
+color 3
+ECHO Pick a Preset
+ECHO 1.Web Browsers
+ECHO 2.Messaging
+ECHO 3.Media
+ECHO 4.Developer Tools
+ECHO 5.Photo
+ECHO 6.Documents
+ECHO 7.Secerity
+ECHO 8.Utilities
+ECHO 9.Other
+ECHO 0.back
+set choice=
+set /p choice=Type the number to pick a preset : 
+if not '%choice%'=='' set choice=%choice:~0,1%
+if '%choice%'=='1' goto browsers10
+if '%choice%'=='2' goto message10
+if '%choice%'=='3' goto media10
+if '%choice%'=='4' goto dev10
+if '%choice%'=='5' goto photo10
+if '%choice%'=='6' goto doc10
+if '%choice%'=='7' goto secerity10
+if '%choice%'=='8' goto utilities10
+if '%choice%'=='9' goto other10
+if '%choice%'=='0' goto start10
+cls
+ECHO "%choice%" is not valid, try again
+ECHO.
+goto start10
+
+:browsers10
+cls
+color 3
+ECHO Pick a Preset
+ECHO 1.Chrome
+ECHO 2.Firefox
+ECHO 3.Brave
+ECHO 4.Opera
+ECHO 5.Opera GX
+ECHO 0.back
+set choice=
+set /p choice=Type the number to pick a preset : 
+if not '%choice%'=='' set choice=%choice:~0,1%
+if '%choice%'=='1' goto chrome10
+if '%choice%'=='2' goto firefox10
+if '%choice%'=='3' goto brave10
+if '%choice%'=='4' goto opera10
+if '%choice%'=='5' goto operagx10
+if '%choice%'=='0' goto start
+cls
+ECHO "%choice%" is not valid, try again
+ECHO.
+goto start10
+
+:chrome10
+cls
+color 7
+
+pause
+goto start10
+
+:firefox10
+cls
+color 7
+
+pause
+goto start10
+
+:brave10
+cls
+color 7
+
+pause
+goto start10
+
+:opera10
+cls
+color 7
+
+pause goto start10
+
+:operagx10
+cls
+color 7
+
+pause
+goto start10
+
+:message10
+cls
+color 3
+ECHO Pick a Preset
+ECHO 1.Discord
+ECHO 2.
+ECHO 3.
+ECHO 4.
+ECHO 5.
+ECHO 6.
+ECHO 7.
+ECHO 8.
+ECHO 9.
+ECHO 0.back
+set choice=
+set /p choice=Type the number to pick a preset : 
+if not '%choice%'=='' set choice=%choice:~0,1%
+if '%choice%'=='1' goto discorddl10
+if '%choice%'=='2' goto 
+if '%choice%'=='3' goto 
+if '%choice%'=='4' goto 
+if '%choice%'=='5' goto 
+if '%choice%'=='6' goto
+if '%choice%'=='7' goto
+if '%choice%'=='8' goto
+if '%choice%'=='9' goto
+if '%choice%'=='0' goto start
+cls
+ECHO "%choice%" is not valid, try again
+ECHO.
+goto start10
+
+:discorddl10
+cls
+color 7
+
+pause
+goto start10
+
+
+ ::lmao
+
+:win11
+goto start
 :start
 cls
 color 3
@@ -277,6 +441,13 @@ goto start
 cls
 start https://discord.gg/k5Ns2DUvE4
 goto start
+
+:wainsato
+cls
+color 3
+echo You are on windows 10 which means your computer does not support WinGet. Please update to Windows 11 get more options!
+pause
+goto start10
 
 :delend
 del main.bat
