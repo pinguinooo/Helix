@@ -444,7 +444,7 @@ goto start
 
 :discord
 cls
-start https://discord.gg/k5Ns2DUvE4
+start https://discord.gg/SKUtXVRqDQ
 goto start
 
 :wainsato
