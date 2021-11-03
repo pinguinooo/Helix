@@ -461,3 +461,6 @@ exit
 
 :end
 exit
+
+:error
+echo You are on a unsupported version of Windows!
