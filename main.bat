@@ -2,6 +2,11 @@
 @title Helix
 echo                                              Welcome to Helix 1.0.0
 echo                                            This Program Auto Updates!
+cd %programfiles%
+if exist Helix (echo Looks like you have used Helix before!) else (goto firsttime)
+:firsttime
+md Helix
+echo Welcome to Helix it looks like this is your first time using this app.
 pause
 
 :verstart
@@ -94,7 +99,7 @@ if '%choice%'=='2' goto firefox10
 if '%choice%'=='3' goto brave10
 if '%choice%'=='4' goto opera10
 if '%choice%'=='5' goto operagx10
-if '%choice%'=='0' goto start
+if '%choice%'=='0' goto verstart
 cls
 ECHO "%choice%" is not valid, try again
 ECHO.
@@ -160,7 +165,7 @@ if '%choice%'=='6' goto
 if '%choice%'=='7' goto
 if '%choice%'=='8' goto
 if '%choice%'=='9' goto
-if '%choice%'=='0' goto start
+if '%choice%'=='0' goto verstart
 cls
 ECHO "%choice%" is not valid, try again
 ECHO.
