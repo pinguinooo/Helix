@@ -4,9 +4,6 @@ echo                                              Welcome to Helix 1.0.0
 echo                                            This Program Auto Updates!
 cd %programfiles%
 if exist Helix (echo Looks like you have used Helix before!) else (goto firsttime)
-:firsttime
-md Helix
-echo Welcome to Helix it looks like this is your first time using this app.
 pause
 
 :verstart
@@ -478,3 +475,9 @@ exit
 
 :error
 echo You are on a unsupported version of Windows!
+pause
+exit
+
+:firsttime
+md Helix
+echo Welcome to Helix it looks like this is your first time using this app.
