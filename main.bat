@@ -3,7 +3,8 @@
 echo                                              Welcome to Helix 1.0.0
 echo                                            This Program Auto Updates!
 cd %programfiles%
-if exist Helix (echo Looks like you have used Helix before!) else (goto firsttime)
+::if exist Helix (echo Looks like you have used Helix before!) else (goto firsttime)
+if exist Helix (echo "File exists") else (echo "File does not exist")
 pause
 
 :verstart
