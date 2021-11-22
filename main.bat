@@ -4,7 +4,7 @@ echo                                              Welcome to Helix 1.0.0
 echo                                            This Program Auto Updates!
 pause
 
-
+:verstart
 ver | find "10.0.22000" > nul
 if errorlevel = 1 goto next1
 if errorlevel = 0 goto win11
@@ -24,6 +24,7 @@ ECHO 1.App Store
 ECHO 2.Change Logs
 ECHO 3.Old Change Logs
 ECHO 4.Join Discord
+ECHO 5.App Recommendations
 ECHO 8.Why am i not seeing all the options?
 ECHO 9.Delete this script and exit
 ECHO 0.Exit
@@ -34,6 +35,7 @@ if '%choice%'=='1' goto appstore10
 if '%choice%'=='2' goto logs
 if '%choice%'=='3' goto oldlogs
 if '%choice%'=='4' goto discord
+if '%choice%'=='5' goto apprec
 if '%choice%'=='8' goto wainsato
 if '%choice%'=='9' goto delend
 if '%choice%'=='0' goto end
@@ -172,7 +174,7 @@ pause
 goto start10
 
 
- ::lmao
+ ::windows 11 starts here
 
 :win11
 goto start
@@ -186,6 +188,7 @@ ECHO 3.Update All Apps
 ECHO 4.Change Logs
 ECHO 5.Old Change Logs
 ECHO 6.Join Discord
+ECHO 5.App Recommendations
 ECHO 9.Delete this script and exit
 ECHO 0.Exit
 set choice=
@@ -197,7 +200,7 @@ if '%choice%'=='3' goto update
 if '%choice%'=='4' goto logs
 if '%choice%'=='5' goto oldlogs
 if '%choice%'=='6' goto discord
-if '%choice%'=='7' goto n
+if '%choice%'=='7' goto apprec
 if '%choice%'=='8' goto n
 if '%choice%'=='9' goto delend
 if '%choice%'=='0' goto end
@@ -386,27 +389,17 @@ cls
 color 3
 ECHO Pick a Preset
 ECHO 1.Discord
-ECHO 2.
-ECHO 3.
-ECHO 4.
-ECHO 5.
-ECHO 6.
-ECHO 7.
-ECHO 8.
-ECHO 9.
+ECHO 2.Zoom
+ECHO 3.Trillian
+ECHO 4.Thunderbird
 ECHO 0.back
 set choice=
 set /p choice=Type the number to pick a preset : 
 if not '%choice%'=='' set choice=%choice:~0,1%
 if '%choice%'=='1' goto discorddl
-if '%choice%'=='2' goto 
-if '%choice%'=='3' goto 
-if '%choice%'=='4' goto 
-if '%choice%'=='5' goto 
-if '%choice%'=='6' goto
-if '%choice%'=='7' goto
-if '%choice%'=='8' goto
-if '%choice%'=='9' goto
+if '%choice%'=='2' goto zoom
+if '%choice%'=='3' goto trillian
+if '%choice%'=='4' goto thunderbird
 if '%choice%'=='0' goto start
 cls
 ECHO "%choice%" is not valid, try again
@@ -416,10 +409,21 @@ goto start
 :discorddl
 cls
 color 7
-winget install discord
+winget install Discord.Discord
 pause
 goto start
 
+:zoom
+cls
+color 7
+winget install Zoom.Zoom
+pause 
+goto start
+
+:pidgen
+cls
+color 7
+winget install pidgen
 :update
 cls
 color 7
@@ -429,23 +433,28 @@ goto start
 
 :logs
 cls
-echo Change logs
-echo Version 1.0.0
+echo                            --Change logs--
+echo                            -Version 1.0.0-
 echo Added the Basics to the program like a appstore,presets and update
 pause
-goto start
+goto verstart
 
 :oldlogs
-echo Old changelogs
+echo                           --Old changelogs--
 echo Were still on 1.0.0 no need for older change logs
 pause
-goto start
+goto verstart
 
 
 :discord
 cls
 start https://discord.gg/SKUtXVRqDQ
-goto start
+goto verstart
+
+:apprec
+cls
+start https://forms.gle/9ts3urLoryk7ogJb6
+goto verstart
 
 :wainsato
 cls
