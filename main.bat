@@ -6,6 +6,7 @@ cd %programfiles%
 :: gonna make it so it wont show if user asks not to 
 if exist Helix (echo Looks like you have used Helix before!) else (goto firsttime)
 pause
+goto verstart
 
 :verstart
 ver | find "10.0.22000" > nul
