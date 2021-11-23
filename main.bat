@@ -3,8 +3,8 @@
 echo                                              Welcome to Helix 1.0.0
 echo                                            This Program Auto Updates!
 cd %programfiles%
-::if exist Helix (echo Looks like you have used Helix before!) else (goto firsttime)
-if exist Helix (echo "Looks like you have used Helix before!") else (goto firsttime)
+:: gonna make it so it wont show if user asks not to 
+if exist Helix (echo Looks like you have used Helix before!) else (goto firsttime)
 pause
 
 :verstart
@@ -482,3 +482,4 @@ exit
 :firsttime
 md Helix
 echo Welcome to Helix it looks like this is your first time using this app.
+pause
