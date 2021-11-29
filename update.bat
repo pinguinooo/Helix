@@ -1,4 +1,5 @@
 @echo off
+@title update
 cd %temp%
 del main.bat
 echo Downloading most latest version of Helix
