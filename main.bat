@@ -6,6 +6,7 @@ cd %programfiles%
 :: gonna make it so it wont show if user asks not to 
 if exist Helix (echo Looks like you have used Helix before!) else (goto firsttime)
 pause
+goto verstart
 
 :verstart
 ver | find "10.0.22000" > nul
@@ -191,7 +192,7 @@ ECHO 3.Update All Apps
 ECHO 4.Change Logs
 ECHO 5.Old Change Logs
 ECHO 6.Join Discord
-ECHO 5.App Recommendations
+ECHO 7.App Recommendations
 ECHO 9.Delete this script and exit
 ECHO 0.Exit
 set choice=
@@ -443,6 +444,7 @@ pause
 goto verstart
 
 :oldlogs
+cls
 echo                           --Old changelogs--
 echo Were still on 1.0.0 no need for older change logs
 pause
@@ -467,6 +469,9 @@ pause
 goto start10
 
 :delend
+cls
+echo Now Uninstalling Helix
+timeout 2 >nul
 del main.bat
 del install.bat
 exit
