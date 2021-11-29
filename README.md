@@ -1,6 +1,6 @@
 
 # Helix
-
+![build](https://github.com/pinguinooo/Helix/workflows/build/badge.svg)
 This is a application that uses Winget if your on Windows 11 or have winget installed or uses Curl to download the installer and automatically open the installer.
 
 
