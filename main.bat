@@ -3,20 +3,10 @@
 echo                                              Welcome to Helix 1.0.0
 echo                                            This Program Auto Updates!
 cd %programfiles%
-:: gonna make it so it wont show if user asks not to 
 if exist Helix (echo Looks like you have used Helix before!) else (goto firsttime)
 pause
-goto verstart
 
-:verstart
-ver | find "10.0.22000" > nul
-if errorlevel = 1 goto next1
-if errorlevel = 0 goto win11
-
-:next1
-ver | find "10.0" > nul
-if errorlevel = 1 goto error
-if errorlevel = 0 goto win10
+if exist winget.txt (goto win11) else (goto win10)
 
 :win10
 goto start10
