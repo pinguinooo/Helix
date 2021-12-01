@@ -5,7 +5,7 @@ echo                                            This Program Auto Updates!
 cd %programfiles%
 if exist Helix (echo Looks like you have used Helix before!) else (goto firsttime)
 pause
-
+cd %temp%
 if exist winget.txt (goto win11) else (goto win10)
 
 :win10
