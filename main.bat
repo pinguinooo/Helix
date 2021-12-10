@@ -1,5 +1,37 @@
 @echo off
 @title Helix
+:init
+setlocal DisableDelayedExpansion
+set cmdInvoke=1
+set winSysFolder=System32
+set "batchPath=%~0"
+for %%k in (%0) do set batchName=%%~nk
+set "vbsGetPrivileges=%temp%\OEgetPriv_%batchName%.vbs"
+setlocal EnableDelayedExpansion
+:checkPrivileges
+NET FILE 1>NUL 2>NUL
+if '%errorlevel%' == '0' ( goto gotPrivileges ) else ( goto getPrivileges )
+:getPrivileges
+if '%1'=='ELEV' (echo ELEV & shift /1 & goto gotPrivileges)
+ECHO Set UAC = CreateObject^("Shell.Application"^) > "%vbsGetPrivileges%"
+ECHO args = "ELEV " >> "%vbsGetPrivileges%"
+ECHO For Each strArg in WScript.Arguments >> "%vbsGetPrivileges%"
+ECHO args = args ^& strArg ^& " "  >> "%vbsGetPrivileges%"
+ECHO Next >> "%vbsGetPrivileges%"
+if '%cmdInvoke%'=='1' goto InvokeCmd 
+ECHO UAC.ShellExecute "!batchPath!", args, "", "runas", 1 >> "%vbsGetPrivileges%"
+goto ExecElevation
+:InvokeCmd
+ECHO args = "/c """ + "!batchPath!" + """ " + args >> "%vbsGetPrivileges%"
+ECHO UAC.ShellExecute "%SystemRoot%\%winSysFolder%\cmd.exe", args, "", "runas", 1 >> "%vbsGetPrivileges%"
+:ExecElevation
+"%SystemRoot%\%winSysFolder%\WScript.exe" "%vbsGetPrivileges%" %*
+exit /B
+:gotPrivileges
+setlocal & cd /d %~dp0
+if '%1'=='ELEV' (del "%vbsGetPrivileges%" 1>nul 2>nul  &  shift /1)
+REM Run shell as admin
+
 echo                                              Welcome to Helix 1.0.0
 echo                                            This Program Auto Updates!
 cd %programfiles%
@@ -18,6 +50,7 @@ ECHO 2.Change Logs
 ECHO 3.Old Change Logs
 ECHO 4.Join Discord
 ECHO 5.App Recommendations
+ECHO 7.Troubleshoot
 ECHO 8.Why am i not seeing all the options?
 ECHO 9.Delete this script and exit
 ECHO 0.Exit
@@ -29,6 +62,7 @@ if '%choice%'=='2' goto logs
 if '%choice%'=='3' goto oldlogs
 if '%choice%'=='4' goto discord
 if '%choice%'=='5' goto apprec
+if '%choice%'=='7' goto troubleshootcurl
 if '%choice%'=='8' goto wingetnotinstalled
 if '%choice%'=='9' goto delend
 if '%choice%'=='0' goto end
@@ -95,35 +129,56 @@ goto curl
 
 :chromecurl
 cls
+cd %temp%
 color 7
-
+if exist helixchrome.msi (del helixchrome.msi)
+echo Now downloading Chrome!
+curl https://dl.google.com/dl/chrome/install/googlechromestandaloneenterprise64.msi -# -o helixchrome.msi
+if exist helixchrome.msi (start helixchrome.msi) else (goto failed)
 pause
 goto curl
 
 :firefoxcurl
 cls
+cd %temp%
 color 7
-
+if exist helixfirefox.msi (del helixfirefox.msi)
+echo Now downloading Firefox!
+curl https://download-installer.cdn.mozilla.net/pub/firefox/releases/95.0/win64/en-US/Firefox%20Setup%2095.0.msi -# -o helixfirefox.msi
+if exist helixfirefox.msi (start helixfirefox.msi) else (goto failed)
 pause
 goto curl
 
 :bravecurl
 cls
+cd %temp%
 color 7
-
+if exist helixbrave.msi (del helixbrave.msi)
+echo Now downloading Brave!
+curl https://github.com/brave/brave-browser/releases/download/v1.33.102/BraveBrowserStandaloneSilentSetup.exe -# -o helixbrave.msi
+if exist helixbrave.msi (start helixbrave.msi) else (goto failed)
 pause
 goto curl
 
 :operacurl
 cls
+cd %temp%
 color 7
-
-pause goto curl
+if exist helixopera.exe (del helixopera.exe)
+echo Now downloading Opera!
+curl https://get.geo.opera.com/pub/opera/desktop/81.0.4196.54/win/Opera_81.0.4196.54_Setup_x64.exe -# -o helixopera.exe
+if exist helixopera.exe (start helixopera.exe) else (goto failed)
+pause
+goto curl
 
 :operagxcurl
 cls
+cd %temp%
 color 7
-
+if exist helixoperagx.exe (del helixoperagx.exe)
+echo Now downloading Opera GX!
+curl https://get.geo.opera.com/pub/opera_gx/81.0.4196.52/win/Opera_GX_81.0.4196.52_Setup_x64.exe -# -o helixoperagx.exe
+if exist helixoperagx.exe (start helixoperagx.exe) else (goto failed)
 pause
 goto curl
 
@@ -132,27 +187,17 @@ cls
 color 3
 ECHO Pick a Preset
 ECHO 1.Discord
-ECHO 2.
-ECHO 3.
-ECHO 4.
-ECHO 5.
-ECHO 6.
-ECHO 7.
-ECHO 8.
-ECHO 9.
+ECHO 2.Zoom
+ECHO 3.Trillian
+ECHO 4.Thunderbird
 ECHO 0.back
 set choice=
 set /p choice=Type the number to pick a preset : 
 if not '%choice%'=='' set choice=%choice:~0,1%
 if '%choice%'=='1' goto discordcurl
-if '%choice%'=='2' goto 
-if '%choice%'=='3' goto 
-if '%choice%'=='4' goto 
-if '%choice%'=='5' goto 
-if '%choice%'=='6' goto
-if '%choice%'=='7' goto
-if '%choice%'=='8' goto
-if '%choice%'=='9' goto
+if '%choice%'=='2' goto zoomcurl
+if '%choice%'=='3' goto trilliancurl
+if '%choice%'=='4' goto thunderbirdcurl
 if '%choice%'=='0' goto curl
 cls
 ECHO "%choice%" is not valid, try again
@@ -161,11 +206,35 @@ goto curl
 
 :discordcurl
 cls
+cd %temp%
 color 7
-
+if exist helixdiscord.msi (del helixdiscord.msi)
+echo Now downloading Discord!
+curl https://dl.discordapp.net/distro/app/stable/win/x86/1.0.9003/DiscordSetup.exe -# -o helixdiscord.msi
+if exist helixdiscord.msi (start helixdiscord.msi) else (goto failed)
 pause
 goto curl
 
+:zoomcurl
+cls
+cd %temp%
+color 7
+if exist helix. (del helix.)
+echo Now downloading !
+curl  -# -o helix.
+if exist helix. (start helix.msi) else (goto failed)
+pause
+goto curl
+
+cls
+cd %temp%
+color 7
+if exist helix. (del helix.)
+echo Now downloading !
+curl  -# -o helix.
+if exist helix. (start helix.msi) else (goto failed)
+pause
+goto curl
 
  ::winget starts here
 
@@ -180,6 +249,7 @@ ECHO 4.Change Logs
 ECHO 5.Old Change Logs
 ECHO 6.Join Discord
 ECHO 7.App Recommendations
+ECHO 8.Troubleshoot
 ECHO 9.Delete this script and exit
 ECHO 0.Exit
 set choice=
@@ -192,7 +262,7 @@ if '%choice%'=='4' goto logs
 if '%choice%'=='5' goto oldlogs
 if '%choice%'=='6' goto discord
 if '%choice%'=='7' goto apprec
-if '%choice%'=='8' goto n
+if '%choice%'=='8' goto troubleshootwinget
 if '%choice%'=='9' goto delend
 if '%choice%'=='0' goto end
 cls
@@ -450,10 +520,13 @@ goto check
 
 :delend
 cls
+cd %temp%
 echo Now Uninstalling Helix
 timeout 2 >nul
 del main.bat
 del install.bat
+if exist chromecurl.msi (del chromecurl.msi)
+
 exit
 
 :wingetnotinstalled
@@ -461,6 +534,50 @@ cls
 echo You do not have winget installed or winget is not supported on your computers version!
 pause
 goto curl
+
+:failed
+color 4 
+echo Failed to install this app!!
+echo returning to appstore
+timeout 5 >nul
+cls
+echo 5
+timeout 1 >nul
+echo 4
+timeout 1 >nul
+echo 3
+timeout 1 >nul
+echo 2
+timeout 1 >nul
+echo 1
+timeout 1 >nul
+cls
+color 3
+goto curl
+
+:troubleshootcurl
+cls
+echo helllo
+pause
+goto curl
+
+:troubleshootwinget
+cls
+cd %temp%
+mode con:cols=135 lines=36
+echo ==================================
+echo +      Helix Troubleshooter      +
+echo ==================================
+echo =+=+=+If you are having a problem with Helix please make a ticket and please include this log and your issue in the ticket.=+=+=+
+echo ===== LOG STARTS HERE =====
+ver
+type winget.txt
+echo ===== LOG ENDS HERE =====
+echo =+=+=+If you are having a problem with Helix please make a ticket and please include this log and your issue in the ticket.=+=+=+
+pause
+cls
+mode con:cols=122 lines=30
+goto winget
 
 :end
 exit

@@ -30,7 +30,3 @@ Yes, Helix is free.
 #### Is this a virus?
 
 No lol this is not a virus, Don't believe me? The project is open source and you can look at all the code or put it directly into virus total.
-
-
-
-
