@@ -1,5 +1,16 @@
 @echo off
 @title Helix
+echo Administrative permissions required. Detecting permissions...
+net session >nul 2>&1
+if %errorLevel% == 0 (
+goto top
+) else (
+echo ===================================================================================
+echo Administrative permissions required, please close and run this as an administrator.
+echo ===================================================================================
+)
+pause >nul
+:top
 
 echo                                              Welcome to Helix 1.0.0
 echo                                            This Program Auto Updates!
