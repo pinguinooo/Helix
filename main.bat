@@ -17,7 +17,7 @@ if exist Helix (echo Looks like you have used Helix before!) else (goto firsttim
 pause
 :check
 cd %temp%
-if exist winget.txt (goto curl) else (goto curl)
+if exist winget.txt (goto winget) else (goto curl)
 
 :curl
 cls
