@@ -8,6 +8,7 @@ echo ===========================================================================
 echo Administrative permissions required, please close and run this as an administrator.
 echo ===================================================================================
 )
+pause >nul
 :top
 cd %programfiles%
 echo                                              Welcome to Helix 1.0.0

@@ -8,6 +8,7 @@ echo ===========================================================================
 echo Administrative permissions required, please close and run this as an administrator.
 echo ===================================================================================
 )
+pause >nul
 :top
 cd %temp%
 del main.bat

@@ -7,6 +7,7 @@ echo ===========================================================================
 echo Administrative permissions required, please close and run this as an administrator.
 echo ===================================================================================
 )
+pause >nul
 :top
 cd %temp%
 curl -s https://raw.githubusercontent.com/pinguinooo/Helix/main/update.bat --output update.bat
