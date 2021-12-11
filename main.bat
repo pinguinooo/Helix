@@ -197,10 +197,30 @@ goto curl
 cls
 cd %temp%
 color 7
-if exist helix. (del helix.)
-echo Now downloading !
-curl  -# -o helix.
-if exist helix. (start helix.msi) else (goto failed)
+if exist helixzoom.msi (del helixzoom.msi)
+echo Now downloading Zoom!
+curl https://cdn.zoom.us/prod/5.8.7.2058/x64/ZoomInstallerFull.msi -# -o helixzoom.msi
+if exist helixzoom.msi (start helixzoom.msi) else (goto failed)
+pause
+goto curl
+
+cls
+cd %temp%
+color 7
+if exist helixtrillian.msi (del helixtrillian.msi)
+echo Now downloading Trillian!
+curl https://trillian.im/get/windows/6.5/trillian-v6.5.0.17.msi -# -o helixtrillian.msi
+if exist helixtrillian.msi (start helixtrillian.msi) else (goto failed)
+pause
+goto curl
+
+cls
+cd %temp%
+color 7
+if exist helixthunderbird.msi (del helixthunderbird.msi)
+echo Now downloading Thunderbird!
+curl https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/91.4.0/win64/en-US/Thunderbird%20Setup%2091.4.0.msi -# -o helixthunderbird.msi
+if exist helixthunderbird.msi (start helixthunderbird.msi) else (goto failed)
 pause
 goto curl
 
@@ -210,7 +230,7 @@ color 7
 if exist helix. (del helix.)
 echo Now downloading !
 curl  -# -o helix.
-if exist helix. (start helix.msi) else (goto failed)
+if exist helix. (start helix.) else (goto failed)
 pause
 goto curl
 
@@ -508,6 +528,8 @@ if exist helixbrave.msi (del helixbrave.msi)
 if exist helixfirefox.msi (del helixfirefox.msi)
 if exist helixopera.exe (del helixopera.exe)
 if exist helixoperagx.exe (del helixoperagx.exe)
+if exist helixtrillian.msi (del helixtrillian.msi)
+if exist helixthunderbird.msi (del helixthunderbird.msi)
 cls
 echo Uninstall finished! Its sad to see you go :(
 pause
