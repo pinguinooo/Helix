@@ -1,5 +1,14 @@
 @echo off
 @title update
+net session >nul 2>&1
+if %errorLevel% == 0 (
+goto top
+) else (
+echo ===================================================================================
+echo Administrative permissions required, please close and run this as an administrator.
+echo ===================================================================================
+)
+:top
 cd %temp%
 del main.bat
 echo Downloading latest version of Helix
