@@ -39,7 +39,7 @@ if exist Helix (echo Looks like you have used Helix before!) else (goto firsttim
 pause
 :check
 cd %temp%
-if exist winget.txt (goto winget) else (goto curl)
+if exist winget.txt (goto curl) else (goto curl)
 
 :curl
 cls
@@ -52,7 +52,7 @@ ECHO 4.Join Discord
 ECHO 5.App Recommendations
 ECHO 7.Troubleshoot
 ECHO 8.Why am i not seeing all the options?
-ECHO 9.Delete this script and exit
+ECHO 9.Uninstall
 ECHO 0.Exit
 set choice=
 set /p choice=Type the number to pick a category : 
@@ -64,7 +64,7 @@ if '%choice%'=='4' goto discord
 if '%choice%'=='5' goto apprec
 if '%choice%'=='7' goto troubleshootcurl
 if '%choice%'=='8' goto wingetnotinstalled
-if '%choice%'=='9' goto delend
+if '%choice%'=='9' goto uninstallcurl
 if '%choice%'=='0' goto end
 cls
 ECHO "%choice%" is not valid, try again
@@ -263,7 +263,7 @@ if '%choice%'=='5' goto oldlogs
 if '%choice%'=='6' goto discord
 if '%choice%'=='7' goto apprec
 if '%choice%'=='8' goto troubleshootwinget
-if '%choice%'=='9' goto delend
+if '%choice%'=='9' goto uninstall
 if '%choice%'=='0' goto end
 cls
 ECHO "%choice%" is not valid, try again
@@ -518,22 +518,31 @@ cls
 start https://forms.gle/9ts3urLoryk7ogJb6
 goto check
 
-:delend
+:uninstallcurl
 cls
 cd %temp%
 echo Now Uninstalling Helix
 timeout 2 >nul
-del main.bat
-del install.bat
-if exist chromecurl.msi (del chromecurl.msi)
-
-exit
-
-:wingetnotinstalled
+if exist main.bat (del main.bat)
+if exist update.bat (del update.bat)
+if exist helixchrome.msi (del helixchrome.msi)
+if exist helixbrave.msi (del helixbrave.msi)
+if exist helixfirefox.msi (del helixfirefox.msi)
+if exist helixopera.exe (del helixopera.exe)
+if exist helixoperagx.exe (del helixoperagx.exe)
 cls
-echo You do not have winget installed or winget is not supported on your computers version!
+echo Uninstall finished! Its sad to see you go :(
 pause
-goto curl
+exit 
+
+:uninstall
+cls
+cd %temp%
+echo Now Uninstalling Helix
+timeout 2 >nul
+if exist main.bat (del main.bat)
+if exist update.bat (del update.bat)
+exit
 
 :failed
 color 4 
@@ -556,12 +565,32 @@ color 3
 goto curl
 
 :troubleshootcurl
+ping -n 2 -w 700 www.google.com | find "bytes="
+IF %ERRORLEVEL% EQU 0 (
+    SET internet=Connected to the internet.
+) ELSE (
+    SET internet=Not connected to the internet.
+)
 cls
-echo helllo
+echo ==================================
+echo +      Helix Troubleshooter      +
+echo ==================================
+echo =+=+=+If you are having a problem with Helix please make a ticket and please include this log and your issue in the ticket.=+=+=+
+echo ===== LOG STARTS HERE =====
+echo %internet%
+ver
+echo ===== LOG ENDS HERE =====
+echo =+=+=+If you are having a problem with Helix please make a ticket and please copy this log and state your issue in the ticket.=+=+=+
 pause
 goto curl
 
 :troubleshootwinget
+ping -n 2 -w 700 www.google.com | find "bytes="
+IF %ERRORLEVEL% EQU 0 (
+    SET internet=Connected to the internet.
+) ELSE (
+    SET internet=Not connected to the internet.
+)
 cls
 cd %temp%
 mode con:cols=135 lines=36
@@ -570,10 +599,11 @@ echo +      Helix Troubleshooter      +
 echo ==================================
 echo =+=+=+If you are having a problem with Helix please make a ticket and please include this log and your issue in the ticket.=+=+=+
 echo ===== LOG STARTS HERE =====
+echo %internet%
 ver
 type winget.txt
 echo ===== LOG ENDS HERE =====
-echo =+=+=+If you are having a problem with Helix please make a ticket and please include this log and your issue in the ticket.=+=+=+
+echo =+=+=+If you are having a problem with Helix please make a ticket and please copy this log and state your issue in the ticket.=+=+=+
 pause
 cls
 mode con:cols=122 lines=30
