@@ -3,9 +3,9 @@ net session >nul 2>&1
 if %errorLevel% == 0 (
 goto top
 ) else (
-echo ===================================================================================
-echo Administrative permissions required, please close and run this as an administrator.
-echo ===================================================================================
+echo =================================================================================
+echo Administrative permissions required, please close and run Helix as administrator.
+echo =================================================================================
 )
 pause >nul
 :top

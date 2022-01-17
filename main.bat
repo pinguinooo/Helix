@@ -4,9 +4,9 @@ net session >nul 2>&1
 if %errorLevel% == 0 (
 goto top
 ) else (
-echo ===================================================================================
-echo Administrative permissions required, please close and run this as an administrator.
-echo ===================================================================================
+echo =================================================================================
+echo Administrative permissions required, please close and run Helix as administrator.
+echo =================================================================================
 )
 pause >nul
 :top
@@ -248,7 +248,7 @@ ECHO 5.Old Change Logs
 ECHO 6.Join Discord
 ECHO 7.App Recommendations
 ECHO 8.Troubleshoot
-ECHO 9.Delete this script and exit
+ECHO 9.Uninstall
 ECHO 0.Exit
 set choice=
 set /p choice=Type the number to pick a category : 
@@ -542,6 +542,12 @@ echo Now Uninstalling Helix
 timeout 2 >nul
 if exist main.bat (del main.bat)
 if exist update.bat (del update.bat)
+cd %programfiles%
+echo To fully uninstall Helix type y
+del Helix
+cls
+echo Uninstall finished! Its sad to see you go :(
+pause
 exit
 
 :failed
@@ -566,6 +572,7 @@ goto curl
 
 :troubleshootcurl
 ping -n 2 -w 700 www.google.com | find "bytes="
+cls
 IF %ERRORLEVEL% EQU 0 (
     SET internet=Connected to the internet.
 ) ELSE (
@@ -586,6 +593,7 @@ goto curl
 
 :troubleshootwinget
 ping -n 2 -w 700 www.google.com | find "bytes="
+cls
 IF %ERRORLEVEL% EQU 0 (
     SET internet=Connected to the internet.
 ) ELSE (
@@ -614,5 +622,6 @@ exit
 
 :firsttime
 md Helix
-echo Welcome to Helix it looks like this is your first time using this app.
+echo Welcome to Helix! It looks like this is your first time using Helix.
+echo Helix is a Open Source app store using winget/curl.
 pause
