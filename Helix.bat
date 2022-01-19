@@ -10,10 +10,10 @@ echo ===========================================================================
 pause >nul
 :top
 cd %programfiles%
-if exist HelixInc cd HelixInc else mkdir HelixInc
-cd HelixInc
+if exist HelixTools cd HelixTools else mkdir HelixTools
+cd HelixTools
 mkdir downloadedapps
-cd %programfiles%\HelixInc
+cd %programfiles%\HelixTools
 curl -s https://raw.githubusercontent.com/pinguinooo/Helix/main/update.bat --output update.bat
 start update.bat
 exit

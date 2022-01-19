@@ -15,7 +15,7 @@ echo                                              Welcome to Helix 1.0.0
 echo                                            This Program Auto Updates!
 pause
 :check
-cd %programfiles%\HelixInc
+cd %programfiles%\HelixTools
 if exist winget.txt (goto winget) else (goto curl)
 
 :curl
@@ -106,7 +106,7 @@ goto curl
 
 :chromecurl
 cls
-cd %programfiles%\HelixInc\downloadedapps
+cd %programfiles%\HelixTools\downloadedapps
 color 7
 if exist helixchrome.msi (del helixchrome.msi)
 echo Now downloading Chrome!
@@ -117,7 +117,7 @@ goto curl
 
 :firefoxcurl
 cls
-cd %programfiles%\HelixInc\downloadedapps
+cd %programfiles%\HelixTools\downloadedapps
 color 7
 if exist helixfirefox.msi (del helixfirefox.msi)
 echo Now downloading Firefox!
@@ -128,7 +128,7 @@ goto curl
 
 :bravecurl
 cls
-cd %programfiles%\HelixInc\downloadedapps
+cd %programfiles%\HelixTools\downloadedapps
 color 7
 if exist helixbrave.msi (del helixbrave.msi)
 echo Now downloading Brave!
@@ -139,7 +139,7 @@ goto curl
 
 :operacurl
 cls
-cd %programfiles%\HelixInc\downloadedapps
+cd %programfiles%\HelixTools\downloadedapps
 color 7
 if exist helixopera.exe (del helixopera.exe)
 echo Now downloading Opera!
@@ -150,7 +150,7 @@ goto curl
 
 :operagxcurl
 cls
-cd %programfiles%\HelixInc\downloadedapps
+cd %programfiles%\HelixTools\downloadedapps
 color 7
 if exist helixoperagx.exe (del helixoperagx.exe)
 echo Now downloading Opera GX!
@@ -183,7 +183,7 @@ goto curl
 
 :discordcurl
 cls
-cd %programfiles%\HelixInc\downloadedapps
+cd %programfiles%\HelixTools\downloadedapps
 color 7
 if exist helixdiscord.msi (del helixdiscord.msi)
 echo Now downloading Discord!
@@ -194,7 +194,7 @@ goto curl
 
 :zoomcurl
 cls
-cd %programfiles%\HelixInc\downloadedapps
+cd %programfiles%\HelixTools\downloadedapps
 color 7
 if exist helixzoom.msi (del helixzoom.msi)
 echo Now downloading Zoom!
@@ -205,7 +205,7 @@ goto curl
 
 :trilliancurl
 cls
-cd %programfiles%\HelixInc\downloadedapps
+cd %programfiles%\HelixTools\downloadedapps
 color 7
 if exist helixtrillian.msi (del helixtrillian.msi)
 echo Now downloading Trillian!
@@ -216,7 +216,7 @@ goto curl
 
 :thunderbirdcurl
 cls
-cd %programfiles%\HelixInc\downloadedapps
+cd %programfiles%\HelixTools\downloadedapps
 color 7
 if exist helixthunderbird.msi (del helixthunderbird.msi)
 echo Now downloading Thunderbird!
@@ -227,7 +227,7 @@ goto curl
 
 
 cls
-cd %programfiles%/HelixInc/downloadedapps
+cd %programfiles%/HelixTools/downloadedapps
 color 7
 if exist helix. (del helix.)
 echo Now downloading !
@@ -523,7 +523,7 @@ cls
 cd %programfiles%
 echo Now Uninstalling Helix
 timeout 2 >nul
-del HelixInc
+del HelixTools
 cls
 echo Uninstall finished! Its sad to see you go :(
 pause
@@ -579,7 +579,7 @@ IF %ERRORLEVEL% EQU 0 (
     SET internet=Not connected to the internet.
 )
 cls
-cd %programfiles%\HelixInc
+cd %programfiles%\HelixTools
 mode con:cols=135 lines=36
 echo ==================================
 echo +      Helix Troubleshooter      +

@@ -11,7 +11,7 @@ echo ===========================================================================
 pause >nul
 :top
 cd %programfiles%
-cd HelixInc
+cd HelixTools
 del main.bat
 echo Downloading latest version of Helix
 timeout 1 >nul
