@@ -4,13 +4,14 @@ net session >nul 2>&1
 if %errorLevel% == 0 (
 goto top
 ) else (
-echo =================================================================================
-echo Administrative permissions required, please close and run Helix as administrator.
-echo =================================================================================
+echo ===================================================================================
+echo +Administrative permissions required, please close and run Helix as administrator.+
+echo ===================================================================================
 )
 pause >nul
 :top
-cd %temp%
+cd %programfiles%
+cd HelixInc
 del main.bat
 echo Downloading latest version of Helix
 timeout 1 >nul

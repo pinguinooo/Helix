@@ -4,19 +4,18 @@ net session >nul 2>&1
 if %errorLevel% == 0 (
 goto top
 ) else (
-echo =================================================================================
-echo Administrative permissions required, please close and run Helix as administrator.
-echo =================================================================================
+echo ===================================================================================
+echo +Administrative permissions required, please close and run Helix as administrator.+
+echo ===================================================================================
 )
 pause >nul
 :top
 cd %programfiles%
 echo                                              Welcome to Helix 1.0.0
 echo                                            This Program Auto Updates!
-if exist Helix (echo Looks like you have used Helix before!) else (goto firsttime)
 pause
 :check
-cd %temp%
+cd %programfiles%\HelixInc
 if exist winget.txt (goto winget) else (goto curl)
 
 :curl
@@ -107,7 +106,7 @@ goto curl
 
 :chromecurl
 cls
-cd %temp%
+cd %programfiles%\HelixInc\downloadedapps
 color 7
 if exist helixchrome.msi (del helixchrome.msi)
 echo Now downloading Chrome!
@@ -118,7 +117,7 @@ goto curl
 
 :firefoxcurl
 cls
-cd %temp%
+cd %programfiles%\HelixInc\downloadedapps
 color 7
 if exist helixfirefox.msi (del helixfirefox.msi)
 echo Now downloading Firefox!
@@ -129,7 +128,7 @@ goto curl
 
 :bravecurl
 cls
-cd %temp%
+cd %programfiles%\HelixInc\downloadedapps
 color 7
 if exist helixbrave.msi (del helixbrave.msi)
 echo Now downloading Brave!
@@ -140,7 +139,7 @@ goto curl
 
 :operacurl
 cls
-cd %temp%
+cd %programfiles%\HelixInc\downloadedapps
 color 7
 if exist helixopera.exe (del helixopera.exe)
 echo Now downloading Opera!
@@ -151,7 +150,7 @@ goto curl
 
 :operagxcurl
 cls
-cd %temp%
+cd %programfiles%\HelixInc\downloadedapps
 color 7
 if exist helixoperagx.exe (del helixoperagx.exe)
 echo Now downloading Opera GX!
@@ -184,7 +183,7 @@ goto curl
 
 :discordcurl
 cls
-cd %temp%
+cd %programfiles%\HelixInc\downloadedapps
 color 7
 if exist helixdiscord.msi (del helixdiscord.msi)
 echo Now downloading Discord!
@@ -195,7 +194,7 @@ goto curl
 
 :zoomcurl
 cls
-cd %temp%
+cd %programfiles%\HelixInc\downloadedapps
 color 7
 if exist helixzoom.msi (del helixzoom.msi)
 echo Now downloading Zoom!
@@ -204,8 +203,9 @@ if exist helixzoom.msi (start helixzoom.msi) else (goto failed)
 pause
 goto curl
 
+:trilliancurl
 cls
-cd %temp%
+cd %programfiles%\HelixInc\downloadedapps
 color 7
 if exist helixtrillian.msi (del helixtrillian.msi)
 echo Now downloading Trillian!
@@ -214,8 +214,9 @@ if exist helixtrillian.msi (start helixtrillian.msi) else (goto failed)
 pause
 goto curl
 
+:thunderbirdcurl
 cls
-cd %temp%
+cd %programfiles%\HelixInc\downloadedapps
 color 7
 if exist helixthunderbird.msi (del helixthunderbird.msi)
 echo Now downloading Thunderbird!
@@ -224,8 +225,9 @@ if exist helixthunderbird.msi (start helixthunderbird.msi) else (goto failed)
 pause
 goto curl
 
+
 cls
-cd %temp%
+cd %programfiles%/HelixInc/downloadedapps
 color 7
 if exist helix. (del helix.)
 echo Now downloading !
@@ -516,35 +518,12 @@ cls
 start https://forms.gle/9ts3urLoryk7ogJb6
 goto check
 
-:uninstallcurl
-cls
-cd %temp%
-echo Now Uninstalling Helix
-timeout 2 >nul
-if exist main.bat (del main.bat)
-if exist update.bat (del update.bat)
-if exist helixchrome.msi (del helixchrome.msi)
-if exist helixbrave.msi (del helixbrave.msi)
-if exist helixfirefox.msi (del helixfirefox.msi)
-if exist helixopera.exe (del helixopera.exe)
-if exist helixoperagx.exe (del helixoperagx.exe)
-if exist helixtrillian.msi (del helixtrillian.msi)
-if exist helixthunderbird.msi (del helixthunderbird.msi)
-cls
-echo Uninstall finished! Its sad to see you go :(
-pause
-exit 
-
 :uninstall
 cls
-cd %temp%
+cd %programfiles%
 echo Now Uninstalling Helix
 timeout 2 >nul
-if exist main.bat (del main.bat)
-if exist update.bat (del update.bat)
-cd %programfiles%
-echo To fully uninstall Helix type y
-del Helix
+del HelixInc
 cls
 echo Uninstall finished! Its sad to see you go :(
 pause
@@ -552,7 +531,7 @@ exit
 
 :failed
 color 4 
-echo Failed to install this app!!
+echo Failed to install this app!! Please check your Connection or Firewall.
 echo returning to appstore
 timeout 5 >nul
 cls
@@ -600,7 +579,7 @@ IF %ERRORLEVEL% EQU 0 (
     SET internet=Not connected to the internet.
 )
 cls
-cd %temp%
+cd %programfiles%\HelixInc
 mode con:cols=135 lines=36
 echo ==================================
 echo +      Helix Troubleshooter      +
@@ -619,9 +598,3 @@ goto winget
 
 :end
 exit
-
-:firsttime
-md Helix
-echo Welcome to Helix! It looks like this is your first time using Helix.
-echo Helix is a Open Source app store using winget/curl.
-pause
