@@ -10,7 +10,7 @@ echo ===========================================================================
 pause >nul
 :top
 cd %programfiles%
-if exist HelixTools cd HelixTools else mkdir HelixTools
+if exist HelixTools (cd HelixTools) else (md HelixTools)
 cd HelixTools
 mkdir downloadedapps
 cd %programfiles%\HelixTools
