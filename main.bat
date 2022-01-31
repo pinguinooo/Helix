@@ -21,7 +21,7 @@ if exist winget.txt (goto winget) else (goto curl)
 :curl
 cls
 color 3
-ECHO Pick a category
+ECHO Pick a Category
 ECHO 1.App Store
 ECHO 2.Change Logs
 ECHO 3.Old Change Logs
@@ -32,7 +32,7 @@ ECHO 8.Why am i not seeing all the options?
 ECHO 9.Uninstall
 ECHO 0.Exit
 set choice=
-set /p choice=Type the number to pick a category : 
+set /p choice=Type the number to pick a Category : 
 if not '%choice%'=='' set choice=%choice:~0,1%
 if '%choice%'=='1' goto appstorecurl
 if '%choice%'=='2' goto logs
@@ -51,7 +51,7 @@ goto curl
 :appstorecurl
 cls
 color 3
-ECHO Pick a Preset
+ECHO Pick a Category
 ECHO 1.Web Browsers
 ECHO 2.Messaging
 ECHO 3.Media
@@ -63,7 +63,7 @@ ECHO 8.Utilities
 ECHO 9.Other
 ECHO 0.back
 set choice=
-set /p choice=Type the number to pick a preset : 
+set /p choice=Type the number to pick a Category : 
 if not '%choice%'=='' set choice=%choice:~0,1%
 if '%choice%'=='1' goto browserscurl
 if '%choice%'=='2' goto messagecurl
@@ -83,7 +83,7 @@ goto curl
 :browserscurl
 cls
 color 3
-ECHO Pick a Preset
+ECHO Pick a Category
 ECHO 1.Chrome
 ECHO 2.Firefox
 ECHO 3.Brave
@@ -91,7 +91,7 @@ ECHO 4.Opera
 ECHO 5.Opera GX
 ECHO 0.back
 set choice=
-set /p choice=Type the number to pick a preset : 
+set /p choice=Type the number to pick a Category : 
 if not '%choice%'=='' set choice=%choice:~0,1%
 if '%choice%'=='1' goto chromecurl
 if '%choice%'=='2' goto firefoxcurl
@@ -162,14 +162,14 @@ goto curl
 :messagecurl
 cls
 color 3
-ECHO Pick a Preset
+ECHO Pick a Category
 ECHO 1.Discord
 ECHO 2.Zoom
 ECHO 3.Trillian
 ECHO 4.Thunderbird
 ECHO 0.back
 set choice=
-set /p choice=Type the number to pick a preset : 
+set /p choice=Type the number to pick a Category : 
 if not '%choice%'=='' set choice=%choice:~0,1%
 if '%choice%'=='1' goto discordcurl
 if '%choice%'=='2' goto zoomcurl
@@ -241,7 +241,7 @@ goto curl
 :winget
 cls
 color 3
-ECHO Pick a category
+ECHO Pick a Category
 ECHO 1.Packs
 ECHO 2.App Store
 ECHO 3.Update All Apps
@@ -253,7 +253,7 @@ ECHO 8.Troubleshoot
 ECHO 9.Uninstall
 ECHO 0.Exit
 set choice=
-set /p choice=Type the number to pick a category : 
+set /p choice=Type the number to pick a Category : 
 if not '%choice%'=='' set choice=%choice:~0,1%
 if '%choice%'=='1' goto packs
 if '%choice%'=='2' goto appstore
@@ -283,7 +283,7 @@ echo 8.Communication
 echo 9.School
 ECHO 0.back
 set choice=
-set /p choice=Type the number to pick a preset : 
+set /p choice=Type the number to pick a Category : 
 if not '%choice%'=='' set choice=%choice:~0,1%
 if '%choice%'=='1' goto basicinstallm
 if '%choice%'=='2' goto basicinstall
@@ -360,7 +360,7 @@ goto winget
 :appstore
 cls
 color 3
-ECHO Pick a Preset
+ECHO Pick a Category
 ECHO 1.Web Browsers
 ECHO 2.Messaging
 ECHO 3.Media
@@ -372,7 +372,7 @@ ECHO 8.Utilities
 ECHO 9.Other
 ECHO 0.back
 set choice=
-set /p choice=Type the number to pick a preset : 
+set /p choice=Type the number to pick a Category : 
 if not '%choice%'=='' set choice=%choice:~0,1%
 if '%choice%'=='1' goto browsers
 if '%choice%'=='2' goto message
@@ -392,7 +392,7 @@ goto winget
 :browsers
 cls
 color 3
-ECHO Pick a Preset
+ECHO Pick a Category
 ECHO 1.Chrome
 ECHO 2.Firefox
 ECHO 3.Brave
@@ -400,7 +400,7 @@ ECHO 4.Opera
 ECHO 5.Opera GX
 ECHO 0.back
 set choice=
-set /p choice=Type the number to pick a preset : 
+set /p choice=Type the number to pick a Category : 
 if not '%choice%'=='' set choice=%choice:~0,1%
 if '%choice%'=='1' goto chrome
 if '%choice%'=='2' goto firefox
@@ -448,14 +448,14 @@ winget install --id Opera.OperaGX
 :message
 cls
 color 3
-ECHO Pick a Preset
+ECHO Pick a Category
 ECHO 1.Discord
 ECHO 2.Zoom
 ECHO 3.Trillian
 ECHO 4.Thunderbird
 ECHO 0.back
 set choice=
-set /p choice=Type the number to pick a preset : 
+set /p choice=Type the number to pick a Category : 
 if not '%choice%'=='' set choice=%choice:~0,1%
 if '%choice%'=='1' goto discorddl
 if '%choice%'=='2' goto zoom
@@ -492,7 +492,138 @@ winget upgrade --all
 pause
 goto winget
 
+:media
+cls
+color 3
+ECHO Pick a Category
+ECHO 1.iTunes
+ECHO 2.VLC
+ECHO 3.Spotify
+ECHO 4.HandBrake
+ECHO 5.Audacity
+ECHO 6.foobar2000
+ECHO 7.AIMP
+ECHO 8.MediaMonkey
+ECHO 9.Winamp
+ECHO 0.Back
+set choice=
+set /p choice=Type the number to pick a Category : 
+if not '%choice%'=='' set choice=%choice:~0,1%
+if '%choice%'=='1' goto itunes
+if '%choice%'=='2' goto vlc
+if '%choice%'=='3' goto spotify
+if '%choice%'=='4' goto handbrake
+if '%choice%'=='5' goto audacity
+if '%choice%'=='6' goto foobar2000
+if '%choice%'=='7' goto aimp
+if '%choice%'=='8' goto mediamonkey
+if '%choice%'=='9' goto winamp
+if '%choice%'=='0' goto winget
+cls
+ECHO "%choice%" is not valid, try again
+ECHO.
+goto winget
 
+:itunes
+cls 
+color 3
+winget install Apple.iTunes
+pause
+goto winget
+
+:vlc
+cls 
+color 3
+winget install VideoLAN.VLC
+pause
+goto winget
+
+:spotify
+cls
+color 3
+winget install Spotify.Spotify
+pause
+goto winget
+
+:handbrake
+cls 
+color 3
+winget install HandBrake.HandBrake
+pause
+goto winget
+
+:audacity
+cls
+color 3
+winget install Audacity.Audacity
+pause
+goto winget
+
+:foobar2000
+cls
+color 3
+winget install PeterPawlowski.foobar2000
+pause
+goto winget
+
+:aimp
+cls
+color 3
+winget install AIMP.AIMP
+pause
+goto winget
+
+:mediamonkey
+cls 
+color 3
+winget install VentisMedia.MediaMonkey
+pause
+goto winget
+
+:winamp
+cls
+color 3
+winget install Radionomy.Winamp
+pause
+goto winget
+
+:dev
+cls
+color 3
+ECHO Pick a Category
+ECHO 1.Visual Studio Code
+ECHO 2.Eclipse
+ECHO 3.Python 3
+ECHO 4.FileZilla
+ECHO 5.PuTTY
+ECHO 6.WinSCP
+ECHO 7.Notepad++
+ECHO 8.WinMerge
+ECHO 0.Back
+set choice=
+set /p choice=Type the number to pick a Category : 
+if not '%choice%'=='' set choice=%choice:~0,1%
+if '%choice%'=='1' goto visualstudiocode
+if '%choice%'=='2' goto 
+if '%choice%'=='3' goto 
+if '%choice%'=='4' goto 
+if '%choice%'=='5' goto 
+if '%choice%'=='6' goto 
+if '%choice%'=='7' goto 
+if '%choice%'=='8' goto 
+if '%choice%'=='9' goto 
+if '%choice%'=='0' goto 
+cls
+ECHO "%choice%" is not valid, try again
+ECHO.
+goto winget
+
+:visualstudiocode
+cls
+color 3
+winget install Microsoft.VisualStudioCode
+pause
+goto winget
 
 :logs
 cls
