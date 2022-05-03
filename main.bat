@@ -9,6 +9,7 @@ echo +Administrative permissions required, please close and run Helix as adminis
 echo ===================================================================================
 )
 pause >nul
+rem Version 1.0.0
 :top
 cd %programfiles%
 echo                                              Welcome to Helix 1.0.0
@@ -360,6 +361,7 @@ goto winget
 :appstore
 cls
 color 3
+
 ECHO Pick a Category
 ECHO 1.Web Browsers
 ECHO 2.Messaging
@@ -367,7 +369,7 @@ ECHO 3.Media
 ECHO 4.Developer Tools
 ECHO 5.Photo
 ECHO 6.Documents
-ECHO 7.Secerity
+ECHO 7.Security
 ECHO 8.Utilities
 ECHO 9.Other
 ECHO 0.back
@@ -380,7 +382,7 @@ if '%choice%'=='3' goto media
 if '%choice%'=='4' goto dev
 if '%choice%'=='5' goto photo
 if '%choice%'=='6' goto doc
-if '%choice%'=='7' goto secerity
+if '%choice%'=='7' goto security
 if '%choice%'=='8' goto utilities
 if '%choice%'=='9' goto other
 if '%choice%'=='0' goto winget
@@ -592,27 +594,24 @@ cls
 color 3
 ECHO Pick a Category
 ECHO 1.Visual Studio Code
-ECHO 2.Eclipse
-ECHO 3.Python 3
-ECHO 4.FileZilla
-ECHO 5.PuTTY
-ECHO 6.WinSCP
-ECHO 7.Notepad++
-ECHO 8.WinMerge
+ECHO 2.Python 3
+ECHO 3.FileZilla
+ECHO 4.PuTTY
+ECHO 5.WinSCP
+ECHO 6.Notepad++
+ECHO 7.WinMerge
 ECHO 0.Back
 set choice=
 set /p choice=Type the number to pick a Category : 
 if not '%choice%'=='' set choice=%choice:~0,1%
 if '%choice%'=='1' goto visualstudiocode
-if '%choice%'=='2' goto 
-if '%choice%'=='3' goto 
-if '%choice%'=='4' goto 
-if '%choice%'=='5' goto 
-if '%choice%'=='6' goto 
-if '%choice%'=='7' goto 
-if '%choice%'=='8' goto 
-if '%choice%'=='9' goto 
-if '%choice%'=='0' goto 
+if '%choice%'=='2' goto python3
+if '%choice%'=='3' goto filezilla
+if '%choice%'=='4' goto putty
+if '%choice%'=='5' goto winscp
+if '%choice%'=='6' goto notepad++
+if '%choice%'=='7' goto winmerge
+if '%choice%'=='0' goto winget
 cls
 ECHO "%choice%" is not valid, try again
 ECHO.
@@ -624,6 +623,255 @@ color 3
 winget install Microsoft.VisualStudioCode
 pause
 goto winget
+
+:python3
+cls
+color 3
+winget install Python.Python.3
+pause
+goto winget
+
+:filezilla
+cls
+color 3
+winget install TimKosse.FileZilla.Client
+pause
+goto winget
+
+:putty
+cls
+color 3
+winget install PuTTY.PuTTY
+pause
+goto winget
+
+:winscp
+cls
+color 3
+winget install PuTTY.PuTTY
+pause
+goto winget
+
+:notepad++
+cls
+color 3
+winget install Notepad++.Notepad++
+pause
+goto winget
+
+:winmerge
+cls
+color 3
+winget install WinMerge.WinMerge
+pause
+goto winget
+
+:photo
+cls
+color 3
+ECHO Pick a Category
+ECHO 1.GIMP
+ECHO 2.ShareX
+ECHO 3.IrfanView
+ECHO 4.Blender
+ECHO 5.Greenshot
+ECHO 6.Inkscape
+ECHO 7.XnView
+ECHO 0.back
+set choice=
+set /p choice=Type the number to pick a Category : 
+if not '%choice%'=='' set choice=%choice:~0,1%
+if '%choice%'=='1' goto gimp
+if '%choice%'=='2' goto sharex
+if '%choice%'=='3' goto irfanview
+if '%choice%'=='4' goto blender
+if '%choice%'=='5' goto greenshot
+if '%choice%'=='6' goto inkscape
+if '%choice%'=='7' goto xnview
+if '%choice%'=='0' goto winget
+cls
+ECHO "%choice%" is not valid, try again
+ECHO.
+goto winget
+
+:gimp
+cls
+color 3
+winget install GIMP.GIMP
+pause
+goto winget
+
+:cls
+color 3
+winget install ShareX.ShareX
+pause
+goto winget
+
+:irfanview
+cls
+color 3
+winget install IrfanSkiljan.IrfanView
+pause
+goto winget
+
+:blender
+cls
+color 3
+winget install BlenderFoundation.Blender
+pause
+goto winget
+
+:greenshot
+cls 
+color 3
+winget install Greenshot.Greenshot
+pause
+goto winget
+
+:inkscape 
+cls
+color 3
+winget install Inkscape.Inkscape
+pause
+goto winget
+
+:xnview 
+cls
+color 3
+winget install XnSoft.XnView.Classic
+pause
+goto winget
+
+:security
+cls
+color 3
+ECHO Pick a Category
+ECHO 1.Malwarebytes
+ECHO 2.AVG
+ECHO 3.Avast
+ECHO 4.SUPERAntiSpyware
+ECHO 0.back
+set choice=
+set /p choice=Type the number to pick a Category : 
+if not '%choice%'=='' set choice=%choice:~0,1%
+if '%choice%'=='1' goto malwarebytes
+if '%choice%'=='2' goto avg
+if '%choice%'=='3' goto avast
+if '%choice%'=='4' goto superantispyware
+if '%choice%'=='0' goto winget
+cls
+ECHO "%choice%" is not valid, try again
+ECHO.
+goto winget
+
+:malwarebytes
+cls
+color 3
+winget install Malwarebytes.Malwarebytes
+pause
+goto winget
+
+:avg
+cls
+color 3
+winget install avg
+pause
+goto winget
+
+:avast 
+cls
+color 3
+winget install avast
+pause
+goto winget
+
+:superantispyware
+cls
+color 3
+winget install SUPERAntiSpyware.SUPERAntiSpyware
+pause
+goto winget
+
+:appstore
+cls
+color 3
+ECHO Pick a Category
+ECHO 1.TeamViewer 15
+ECHO 2.ImgBurn
+ECHO 3.Revo Uninstaller
+ECHO 4.WinDirStat
+ECHO 5.TeraCopy
+ECHO 6.Launchy
+ECHO 7.Glary
+ECHO 8.InfraRecorder
+ECHO 9.Classic Start
+ECHO 0.back
+set choice=
+set /p choice=Type the number to pick a Category : 
+if not '%choice%'=='' set choice=%choice:~0,1%
+if '%choice%'=='1' goto teamviewer
+if '%choice%'=='2' goto imgburn
+if '%choice%'=='3' goto revouninstaller
+if '%choice%'=='4' goto windirstat
+if '%choice%'=='5' goto teracopy
+if '%choice%'=='6' goto launchy
+if '%choice%'=='7' goto glary
+if '%choice%'=='8' goto infrarecorder
+if '%choice%'=='0' goto winget
+cls
+ECHO "%choice%" is not valid, try again
+ECHO.
+goto winget
+
+:teamviewer
+cls
+color 3
+wignet install TeamViewer.TeamViewer
+pause
+goto winget
+
+:imgburn
+cls
+color 3
+winget install LIGHTNINGUK.ImgBurn
+pause
+goto winget
+
+:revouninstaller
+cls
+color 3
+winget install RevoUninstaller.RevoUninstaller
+pause
+goto winget
+
+:windirstat
+cls
+color 3
+winget install WinDirStat.WinDirStat
+pause
+goto winget
+
+:teracopy
+cls
+color 3
+winget install CodeSector.TeraCopy
+pause
+goto winget
+
+:launchy
+cls
+color 3
+winget install CodeJelly.Launchy
+pause
+goto winget
+
+:infrarecorder
+cls
+color 3
+winget install ChristianKindahl.InfraRecorder
+pause
+goto winget
+
 
 :logs
 cls
@@ -726,7 +974,7 @@ echo ===== LOG ENDS HERE =====
 echo =+=+=+If you are having a problem with Helix please make a ticket and please copy this log and state your issue in the ticket.=+=+=+
 pause
 cls
-mode con:cols=122 lines=30
+mode con:cols=122 lines=31
 goto winget
 
 :end
