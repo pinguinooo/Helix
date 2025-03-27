@@ -1,8 +1,6 @@
 
 # Helix
-This is a application that uses Winget if your on Windows 11 or have winget installed or uses Curl to download the installer and automatically open the installer.
-
-
+This is a application that uses Winget to install applications if winget is not detected it uses Curl to download and automatically open the installer.
 
 
 ## Authors
